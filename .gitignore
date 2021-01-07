@@ -1,0 +1,17 @@
+__pycache__
+__pycache__/
+.vscode/
+env/
+.venv
+ENV/
+venv/
+bot.py
+main.py
+parser.py
+data.json
+parser2.py
+test.py
+tv_pars.py
+tv.csv
+tv.json
+tv.py

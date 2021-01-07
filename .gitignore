@@ -5,6 +5,8 @@ env/
 .venv
 ENV/
 venv/
+CASh
+CASh/
 bot.py
 main.py
 parser.py

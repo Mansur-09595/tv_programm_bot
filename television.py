@@ -1,12 +1,13 @@
 import json
 import telebot
-
-from test2 import OUT_FILENAME
+import datetime
+from test2 import OUT_FILENAME, get_content
 from telebot import types
 
-bot = telebot.TeleBot(token = '')
+bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
 
-with open(OUT_FILENAME, 'r', encoding="utf-8") as f:
+
+with open('tv.json', 'r', encoding="utf-8") as f:
     s = json.load(f)
     link_ONEKANAL = s[0]['link']
     link_RUSONE = s[1]['link']
@@ -18,7 +19,7 @@ with open(OUT_FILENAME, 'r', encoding="utf-8") as f:
     link_TNT = s[4]['link']
 
 @bot.message_handler(content_types=['text']) 
-def get_text_messages(message): 
+def get_text_messages(message):
     if message.text == "/start": 
         keyboard = types.InlineKeyboardMarkup()
         key_onekanal = types.InlineKeyboardButton(text='Первый канал', callback_data='ONEKANAL_eng')
@@ -44,7 +45,7 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши для запуска /start")
 
 @bot.callback_query_handler(func=lambda call: True) 
-def callback_worker(call): 
+def callback_worker(call):
     if call.data == "ONEKANAL_eng":
         ONE_msg = link_ONEKANAL
         bot.send_message(call.message.chat.id, ONE_msg)

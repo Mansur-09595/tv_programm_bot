@@ -4,7 +4,7 @@ import telebot
 from test2 import OUT_FILENAME
 from telebot import types
 
-bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
+bot = telebot.TeleBot(token = '1046571094:AAFeMq0rOaa4jbdmXZRBWArh6sIIYvZZIpA')
 
 with open(OUT_FILENAME, 'r', encoding="utf-8") as f:
     s = json.load(f)

@@ -3,10 +3,9 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-URL = 'https://tvset.tut.by/'
+URL = 'https://programma-peredach.com'
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0', 'accept': '*/*'}
 
-HOST = 'https://tvset.tut.by'
 OUT_FILENAME = 'tv.json'
 
 FILE = 'tv.csv'
@@ -19,12 +18,12 @@ def get_html(url, params=None):
 
 def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
-    items = soup.find_all('article', class_='channel')
+    items = soup.find_all('div', class_='channel')
     tv_programm = []   
     for item in items:
         tv_programm.append({
-            'title': item.find('h2', class_='channel-name').get_text(strip=True),
-            'link':  item.find('ul', class_='channel-programm').get_text().replace('\n', ' '),
+            'title': item.find('div', class_='title').get_text(strip=True),
+            'link':  item.find('div', class_='line2 proListShort').get_text().replace('\t', '').replace('\n', ' '),
         })
         #Запись в JSON формат:
         with open(OUT_FILENAME, 'w', encoding="utf-8") as f:

@@ -4,7 +4,7 @@ import datetime
 from test2 import parse
 from telebot import types
 
-bot = telebot.TeleBot(token = '1046571094:AAFeMq0rOaa4jbdmXZRBWArh6sIIYvZZIpA')
+bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
 
 
 # s = parse()

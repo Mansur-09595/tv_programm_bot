@@ -1,22 +1,21 @@
 import json
 import telebot
 import datetime
-from test2 import OUT_FILENAME, get_content
+from test2 import parse
 from telebot import types
 
-bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
+bot = telebot.TeleBot(token = '1046571094:AAFeMq0rOaa4jbdmXZRBWArh6sIIYvZZIpA')
 
 
-with open('tv.json', 'r', encoding="utf-8") as f:
-    s = json.load(f)
-    link_ONEKANAL = s[0]['link']
-    link_RUSONE = s[1]['link']
-    link_NTV = s[2]['link']
-    link_RENTV = s[6]['link']
-    link_STS = s[3]['link']
-    link_TV3 = s[13]['link']
-    link_FRIDAY = s[20]['link']
-    link_TNT = s[4]['link']
+# s = parse()
+# link_ONEKANAL = s[0]['link']
+# link_RUSONE = s[1]['link']
+# link_NTV = s[2]['link']
+# link_RENTV = s[6]['link']
+# link_STS = s[3]['link']
+# link_TV3 = s[13]['link']
+# link_FRIDAY = s[20]['link']
+# link_TNT = s[4]['link']
 
 @bot.message_handler(content_types=['text']) 
 def get_text_messages(message):
@@ -47,28 +46,28 @@ def get_text_messages(message):
 @bot.callback_query_handler(func=lambda call: True) 
 def callback_worker(call):
     if call.data == "ONEKANAL_eng":
-        ONE_msg = link_ONEKANAL
+        ONE_msg = parse()[0]['link']
         bot.send_message(call.message.chat.id, ONE_msg)
     elif call.data == "RUSONE_eng": 
-        RUS1_msg = link_RUSONE
+        RUS1_msg = parse()[1]['link']
         bot.send_message(call.message.chat.id, RUS1_msg)
     elif call.data == "NTV_eng": 
-        NTV_msg = link_NTV
+        NTV_msg = parse()[2]['link']
         bot.send_message(call.message.chat.id, NTV_msg)
     elif call.data == "REN_eng": 
-        REN_msg = link_RENTV
+        REN_msg = parse()[6]['link']
         bot.send_message(call.message.chat.id, REN_msg)
     elif call.data == "CTC_eng": 
-        CTC_msg = link_STS
+        CTC_msg = parse()[3]['link']
         bot.send_message(call.message.chat.id, CTC_msg)
     elif call.data == "TV3_eng": 
-        TV3_msg = link_TV3
+        TV3_msg = parse()[13]['link']
         bot.send_message(call.message.chat.id, TV3_msg)
     elif call.data == "FRIDAY_eng": 
-        FRIDAY_msg = link_FRIDAY
+        FRIDAY_msg = parse()[20]['link']
         bot.send_message(call.message.chat.id, FRIDAY_msg)
     elif call.data == "TNT_eng":
-        TNT_msg = link_TNT
+        TNT_msg = parse()[4]['link']
         bot.send_message(call.message.chat.id, TNT_msg)
     else:
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши для запуска /start")

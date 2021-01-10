@@ -4,7 +4,7 @@ import datetime
 from test2 import parse
 from telebot import types
 
-bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
+bot = telebot.TeleBot(token = '')
 
 @bot.message_handler(content_types=['text']) 
 def get_text_messages(message):

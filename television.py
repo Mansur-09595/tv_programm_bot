@@ -6,17 +6,6 @@ from telebot import types
 
 bot = telebot.TeleBot(token = '1436182600:AAFZQH6fxNO3omQa7r2SRnIGecdA1EkTL6I')
 
-
-# s = parse()
-# link_ONEKANAL = s[0]['link']
-# link_RUSONE = s[1]['link']
-# link_NTV = s[2]['link']
-# link_RENTV = s[6]['link']
-# link_STS = s[3]['link']
-# link_TV3 = s[13]['link']
-# link_FRIDAY = s[20]['link']
-# link_TNT = s[4]['link']
-
 @bot.message_handler(content_types=['text']) 
 def get_text_messages(message):
     if message.text == "/start": 
@@ -74,3 +63,14 @@ def callback_worker(call):
 
 
 bot.polling(none_stop=True, interval=0)
+
+
+# s = parse()
+# link_ONEKANAL = s[0]['link']
+# link_RUSONE = s[1]['link']
+# link_NTV = s[2]['link']
+# link_RENTV = s[6]['link']
+# link_STS = s[3]['link']
+# link_TV3 = s[13]['link']
+# link_FRIDAY = s[20]['link']
+# link_TNT = s[4]['link']

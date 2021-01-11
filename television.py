@@ -14,6 +14,8 @@ def get_text_messages(message):
         keyboard.add(key_onekanal)
         key_rusone = types.InlineKeyboardButton(text='Россия 1', callback_data='RUSONE_eng')
         keyboard.add(key_rusone)
+        key_match = types.InlineKeyboardButton(text='Матч!', callback_data='Match_eng')
+        keyboard.add(key_match)
         key_ntv = types.InlineKeyboardButton(text='НТВ', callback_data='NTV_eng')
         keyboard.add(key_ntv)
         key_rentv = types.InlineKeyboardButton(text='РЕН ТВ', callback_data='REN_eng')
@@ -40,6 +42,9 @@ def callback_worker(call):
     elif call.data == "RUSONE_eng": 
         RUS1_msg = parse()[1]['link']
         bot.send_message(call.message.chat.id, RUS1_msg)
+    elif call.data == "Match_eng": 
+        Match_msg = parse()[17]['link']
+        bot.send_message(call.message.chat.id, Match_msg)
     elif call.data == "NTV_eng": 
         NTV_msg = parse()[2]['link']
         bot.send_message(call.message.chat.id, NTV_msg)
@@ -62,15 +67,5 @@ def callback_worker(call):
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши для запуска /start")
 
 
-bot.polling(none_stop=True, interval=0)
-
-
-# s = parse()
-# link_ONEKANAL = s[0]['link']
-# link_RUSONE = s[1]['link']
-# link_NTV = s[2]['link']
-# link_RENTV = s[6]['link']
-# link_STS = s[3]['link']
-# link_TV3 = s[13]['link']
-# link_FRIDAY = s[20]['link']
-# link_TNT = s[4]['link']
+if __name__ == "__main__":
+    bot.polling(none_stop=True, interval=0)
